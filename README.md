@@ -45,7 +45,7 @@ Livy is released under the [MIT License](LICENSE).
 
 5. RUN `docker compose up -d`
 6. Enter to `admin-service` container terminal
-7. Run `npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all`
+7. Run `npm run reset`
 8. All good now.
 
 ## How to deploy the client
