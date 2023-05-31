@@ -10,7 +10,8 @@ const cors = require('cors')
 app .use(cors())
     .use(express.urlencoded({ extended: true }))
     .use(express.json())
-    .use(router.use(errorHandler))
+    .use(router)
+    .use(errorHandler)
 
 
 module.exports = app

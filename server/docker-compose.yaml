@@ -11,6 +11,8 @@ services:
       MONGODB_DATABASE_URL: ${MONGODB_DATABASE_URL}
       MONGODB_DATABASE_NAME: ${MONGODB_DATABASE_NAME}
       DATABASE_URL: ${DATABASE_URL}
+    volumes:
+      - ./services/user:/chat
   admin-service:
     build: ./services/admin
     container_name: admin-service
@@ -22,6 +24,8 @@ services:
       MONGODB_DATABASE_URL: ${MONGODB_DATABASE_URL}
       MONGODB_DATABASE_NAME: ${MONGODB_DATABASE_NAME}
       DATABASE_URL: ${DATABASE_URL}
+    volumes:
+      - ./services/admin:/admin
   chat-service:
     build: ./services/chat
     container_name: chat-service
@@ -73,7 +77,9 @@ services:
     build: ./orchestrator
     container_name: orchestrator
     ports:
-      - '80:4000'
+      - '7000:4000'
+    volumes:
+      - ./services/user:/chat
     environment:
       NODE_ENV: 'production'
       PORT: 4000
@@ -85,3 +91,12 @@ services:
       CHAT_URL: 'http://chat-service:4004'
       SCHEDULE_URL: 'http://schedule-service:4005'
       DAILY_URL: 'http://daily-service:4006'
+
+  pg_livy:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: postgres
+  mongo_livy:
+    image: mongo:6
+  redis_livy:
+    image: redis:7.0.11

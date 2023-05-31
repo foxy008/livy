@@ -124,7 +124,7 @@ module.exports = class UserController {
             role: req.body.role,
           },
         });
-        if (!user && (user.role !== "admin" || user.role !== "superadmin"))
+        if (!user || (user?.role !== "admin" && user?.role !== "superadmin"))
           throw { name: "InvalidCredentials" };
         else {
           const access_token = jwt.sign(

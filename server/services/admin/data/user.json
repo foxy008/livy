@@ -1,5 +1,14 @@
 [
   {
+    "name": "Admin Fachri Super",
+    "email": "fhawari@hacktiv8.com",
+    "gender": "F",
+    "dob": "01/01/1864",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Kendall_Jenner_at_Met_Gala_2021_5.jpg",
+    "role": "admin",
+    "helpful": 5
+  },
+  {
     "name": "Admin1",
     "email": "admin1@gmail.com",
     "gender": "F",
