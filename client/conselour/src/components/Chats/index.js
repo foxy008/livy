@@ -19,7 +19,7 @@ export default function Chats() {
   const { UserId } = router.query
 
   useEffect(() => {
-    const socket = socketIOClient('https://api.livy.chat')
+    const socket = socketIOClient(process.env.NEXT_PUBLIC_API_URL)
 
     socket.auth = { access_token: localStorage.access_token }
 
