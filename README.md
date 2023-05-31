@@ -22,3 +22,28 @@ If you encounter any issues or bugs while using Livy, please let us know by open
 ## License
 
 Livy is released under the [MIT License](LICENSE).
+
+
+## How to deploy the Server
+
+1. Clone the repo on your server
+2. Enter to server directory
+3. Copy `.env.template` to `.env`
+4. Edit file `server/services/admin/data/user.json` if you want to add spesific `admin`, below is the example object, admin role used to login to the CMS.
+
+  ```json
+  {
+    "name": "Admin Fachri Super",
+    "email": "fhawari@hacktiv8.com",
+    "gender": "F",
+    "dob": "01/01/1864",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Kendall_Jenner_at_Met_Gala_2021_5.jpg",
+    "role": "admin",
+    "helpful": 5
+  }
+  ```
+
+5. RUN `docker compose up -d`
+6. Enter to `admin-service` container terminal
+7. Run `npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all`
+8. All good now.
