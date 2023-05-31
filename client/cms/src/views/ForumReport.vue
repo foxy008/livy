@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar.vue'
 import axios from 'axios'
 import { mapActions, mapState } from 'pinia'
 import { useCounterStore } from '../stores/counter'
-let baseUrl = 'https://api.livy.chat'
+let baseUrl = 'http://localhost:7000'
 export default {
   components: {
     Navbar

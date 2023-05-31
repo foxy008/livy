@@ -17,7 +17,7 @@ export default {
       image: '',
       role: '',
       //   baseUrl: 'http://localhost:4002/'
-      baseUrl: 'https://api.livy.chat/'
+      baseUrl: import.meta.env.VITE_API_URL
       // baseUrl: 'https://f34f-114-124-247-157.ngrok.io/'
     }
   },

@@ -4,7 +4,7 @@ import { mapActions, mapState } from 'pinia'
 import { useCounterStore } from '../stores/counter'
 import axios from 'axios'
 
-// let baseUrl = 'https://api.livy.chat'
+// let baseUrl = 'http://localhost:7000'
 let baseUrl = 'http://localhost:4002'
 
 export default {

@@ -15,7 +15,7 @@ export default {
       contentType: '',
       linkURL: '',
       //   baseUrl: 'http://localhost:4002/'
-      baseUrl: 'https://api.livy.chat/'
+      baseUrl: import.meta.env.VITE_API_URL
     }
   },
   computed: {
