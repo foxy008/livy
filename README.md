@@ -47,3 +47,7 @@ Livy is released under the [MIT License](LICENSE).
 6. Enter to `admin-service` container terminal
 7. Run `npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all`
 8. All good now.
+
+## How to deploy the client
+
+For client just simply clone the repo and copy `.env.template` to `.env` and fill in the correct value for each env.
