@@ -14,8 +14,7 @@ export default {
       caption: '',
       contentType: '',
       linkURL: '',
-      //   baseUrl: 'http://localhost:4002/'
-      baseUrl: import.meta.env.VITE_API_URL
+      baseUrl: import.meta.env.VITE_API_URL + '/'
     }
   },
   computed: {
