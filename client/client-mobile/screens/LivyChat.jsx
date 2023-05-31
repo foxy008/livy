@@ -219,7 +219,9 @@ export default function LivyChat(props) {
       }).catch((err) => {
         console.log(err)
       })
-      const socket = socketClient('https://api.livy.chat')
+
+      // TODO: Change to deployed socketio URL
+      const socket = socketClient('http://localhost:7000')
       socket.auth = { access_token: user.access_token }
       setSocket(socket)
 

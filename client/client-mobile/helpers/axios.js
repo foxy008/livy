@@ -1,7 +1,9 @@
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+
+// TODO: Change to deployed orchestra URL
 export const api = axios.create({
-  baseURL: 'https://api.livy.chat',
+  baseURL: 'http://10.0.2.2:7000',
 })
 
 api.interceptors.request.use(async (config) => {

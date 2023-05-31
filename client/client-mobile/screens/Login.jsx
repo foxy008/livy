@@ -13,6 +13,7 @@ WebBrowser.maybeCompleteAuthSession()
 
 export default function Login() {
   const { setUser } = useUser()
+  // TODO: Change to androidClientId foxy008
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
       '662974395385-up045riubc0lga2i5f8mpg086tv3kmh1.apps.googleusercontent.com',
