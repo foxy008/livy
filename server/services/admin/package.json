@@ -6,6 +6,7 @@
   "scripts": {
     "reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all ",
     "dev": "nodemon ./bin/www",
+    "prestart": "npm run reset",
     "start": "node ./bin/www",
     "test": "jest --forceExit --detectOpenHandles --coverage",
     "reset-test": "sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test"

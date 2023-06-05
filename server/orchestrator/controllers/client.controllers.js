@@ -68,15 +68,17 @@ class ClientController {
 
   static async getCounselorByid(req, res, next) {
     try {
-      const { counselorId } = req.params
+      const { counselorId } = req.params;
 
-      const { data: user } = await userAPI.get(`users/${counselorId}`)
-      const { data: counselor } = await userAPI.get(`/submissions/${counselorId}`)
+      const { data: user } = await userAPI.get(`users/${counselorId}`);
+      const { data: counselor } = await userAPI.get(
+        `/submissions/${counselorId}`
+      );
       const { data: availability } = await scheduleAPI.get(
         `/schedules/counselor/${counselorId}/availability`
-      )
+      );
 
-      res.status(200).json({ user, counselor, availability })
+      res.status(200).json({ user, counselor, availability });
     } catch (error) {
       next(error);
     }
@@ -94,19 +96,17 @@ class ClientController {
   }
   static async getChatByCounselorId(req, res, next) {
     try {
-      const { access_token } = req.headers
-      const { counselorId } = req.params
+      const { access_token } = req.headers;
+      const { counselorId } = req.params;
       const {
         data: { id: userId },
-      } = await userAPI.post('/verify', { access_token })
-      const { data } = await chatAPI.get(
-        `/history/${userId}/${counselorId}`
-      )
-      const { data: user } = await userAPI.get(`/users/${userId}`)
-      res.status(200).json({ ...data, user })
+      } = await userAPI.post("/verify", { access_token });
+      const { data } = await chatAPI.get(`/history/${userId}/${counselorId}`);
+      const { data: user } = await userAPI.get(`/users/${userId}`);
+      res.status(200).json({ ...data, user });
     } catch (error) {
-      console.log(error)
-      next(error)
+      console.log(error);
+      next(error);
     }
   }
   static async chatWithLivy(req, res, next) {
@@ -273,8 +273,9 @@ class ClientController {
       console.log(user);
       let { text } = req.body;
       let { postId } = req.params;
-      let result = await forumAPI.post(`/posts/${postId}/comments`,{
-        text, UserId:user.id
+      let result = await forumAPI.post(`/posts/${postId}/comments`, {
+        text,
+        UserId: user.id,
       });
       console.log(result.data);
       res.status(200).json(result.data);
@@ -297,18 +298,23 @@ class ClientController {
       next(error);
     }
   }
-  static async callback(req, res,next){
-    const {external_id} = req.body
-    const token = req.headers['x-callback-token']
-    console.log(req.body)
+  static async callback(req, res, next) {
+    const { external_id } = req.body;
+    const token = req.headers["x-callback-token"];
+    console.log(req.body);
     try {
-      if(process.env.NODE_ENV === 'production' && token !== process.env.CALLBACK_TOKEN ){  
-      throw {name: "InvalidToken"}
+      if (
+        process.env.NODE_ENV === "production" &&
+        token !== process.env.CALLBACK_TOKEN
+      ) {
+        throw { name: "InvalidToken" };
       }
-      const response = await scheduleAPI.patch('/schedules/paid/'+external_id.split('-')[1])
-      res.status(200).json({'message':'Paid Succesfully'})
+      const response = await scheduleAPI.patch(
+        "/schedules/paid/" + external_id.split("-")[1]
+      );
+      res.status(200).json({ message: "Paid Succesfully" });
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 }
