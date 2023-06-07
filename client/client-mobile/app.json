@@ -1,10 +1,10 @@
 {
   "expo": {
     "name": "livy",
-    "slug": "livy",
+    "slug": "gauthapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "livy",
+    "scheme": "gauthappscheme",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -23,7 +21,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "chat.livy.livy"
+      "package": "com.example.gauthapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

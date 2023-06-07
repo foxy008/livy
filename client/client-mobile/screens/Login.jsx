@@ -1,95 +1,92 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import * as WebBrowser from 'expo-web-browser'
-import * as Google from 'expo-auth-session/providers/google'
-import { useEffect, useState } from 'react'
-import talk from '../assets/pages/talk.png'
-import { Button } from 'react-native-paper'
-import axios from 'axios'
-import { useUser } from '../hooks/useUser'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { api } from '../helpers/axios'
+import { StyleSheet, Text, View, Image } from "react-native";
+import * as WebBrowser from "expo-web-browser";
+import * as Google from "expo-auth-session/providers/google";
+import { useEffect } from "react";
+import talk from "../assets/pages/talk.png";
+import { Button } from "react-native-paper";
+import { useUser } from "../hooks/useUser";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { api } from "../helpers/axios";
 
-WebBrowser.maybeCompleteAuthSession()
+WebBrowser.maybeCompleteAuthSession();
 
 export default function Login() {
-  const { setUser } = useUser()
+  const { setUser } = useUser();
   // TODO: Change to androidClientId foxy008
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId:
-      '662974395385-up045riubc0lga2i5f8mpg086tv3kmh1.apps.googleusercontent.com',
     androidClientId:
-      '662974395385-up045riubc0lga2i5f8mpg086tv3kmh1.apps.googleusercontent.com',
+      "274735990607-jine6ql1192k9vqbrve5h80d00v5r4ro.apps.googleusercontent.com",
     iosClientId:
-      '662974395385-up045riubc0lga2i5f8mpg086tv3kmh1.apps.googleusercontent.com',
-  })
+      "274735990607-jine6ql1192k9vqbrve5h80d00v5r4ro.apps.googleusercontent.com",
+    expoClientId:
+      "274735990607-5qb855ni8u2o8d7v18gmjuur2pbsnhbl.apps.googleusercontent.com",
+  });
 
   useEffect(() => {
-    if (response?.type === 'success') {
-      console.log(response.authentication.accessToken)
+    if (response?.type === "success") {
       api
-        .post('/login', {
+        .post("/login", {
           token: response.authentication.accessToken,
-          role: 'user',
+          role: "user",
         })
         .then(async ({ data }) => {
-          console.log(data)
-          setUser(data.user)
-          await AsyncStorage.setItem('access_token', data.access_token)
+          setUser(data.user);
+          await AsyncStorage.setItem("access_token", data.access_token);
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
-  }, [response])
+  }, [response]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>We want get to know you better.</Text>
       <Image source={talk} style={styles.images} />
       <Button
-        mode='contained'
-        icon='google'
+        mode="contained"
+        icon="google"
         style={styles.button}
         disabled={!request}
         onPress={() => {
-          promptAsync()
+          promptAsync();
         }}
-        textColor='#fefefe'
-        buttonColor='#4285F4'
+        textColor="#fefefe"
+        buttonColor="#4285F4"
       >
         Sign in with Google
       </Button>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fefefe',
+    backgroundColor: "#fefefe",
     padding: 20,
-    justifyContent: 'space-evenly',
+    justifyContent: "space-evenly",
   },
   text: {
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   images: {
     height: 200,
-    width: '100%',
-    resizeMode: 'contain',
+    width: "100%",
+    resizeMode: "contain",
     maxWidth: 400,
   },
   header: {
-    backgroundColor: '#fefefe',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    backgroundColor: "#fefefe",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   cancelButton: {
-    backgroundColor: '#fefefe',
+    backgroundColor: "#fefefe",
   },
   button: {
     borderRadius: 10,
     maxWidth: 400,
   },
-})
+});
