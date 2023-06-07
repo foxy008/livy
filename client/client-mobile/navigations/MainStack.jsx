@@ -1,32 +1,32 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { View } from 'react-native'
-import { Text } from 'react-native-paper'
-import MainTab from './MainTab'
-import Login from '../screens/Login'
-import LivyChat from '../screens/LivyChat'
-import StartThread from '../screens/StartThread'
-import ForumPostDetail from '../screens/ForumPostDetail'
-import CounselorPorfile from '../screens/CounselorProfile'
-import Success from '../screens/Success'
-import Todo from '../screens/Todo'
-import PostDetail from '../screens/PostDetail'
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { View } from "react-native";
+import { Text } from "react-native-paper";
+import MainTab from "./MainTab";
+import Login from "../screens/Login";
+import LivyChat from "../screens/LivyChat";
+import StartThread from "../screens/StartThread";
+import ForumPostDetail from "../screens/ForumPostDetail";
+import CounselorPorfile from "../screens/CounselorProfile";
+import Success from "../screens/Success";
+import Todo from "../screens/Todo";
+import PostDetail from "../screens/PostDetail";
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 export default function MainStack() {
   return (
-    <Stack.Navigator initialRouteName='MainTab'>
+    <Stack.Navigator initialRouteName="MainTab">
       <Stack.Screen
-        name='MainTab'
+        name="MainTab"
         options={{
           headerShown: false,
         }}
         component={MainTab}
       />
       <Stack.Screen
-        name='Login'
+        name="Login"
         options={{
           headerShown: false,
         }}
@@ -34,54 +34,54 @@ export default function MainStack() {
       />
 
       <Stack.Screen
-        name='LivyChat'
+        name="LivyChat"
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
         component={LivyChat}
       />
       <Stack.Screen
-        name='StartThread'
+        name="StartThread"
         options={{
           headerShown: false,
         }}
         component={StartThread}
       />
       <Stack.Screen
-        name='ForumPostDetail'
+        name="ForumPostDetail"
         options={{
           headerShown: false,
         }}
         component={ForumPostDetail}
       />
       <Stack.Screen
-        name='CounselorProfile'
+        name="CounselorProfile"
         options={{
           headerShown: false,
         }}
         component={CounselorPorfile}
       />
       <Stack.Screen
-        name='PostDetail'
+        name="PostDetail"
         options={{
           headerShown: false,
         }}
         component={PostDetail}
       />
       <Stack.Screen
-        name='Success'
+        name="Success"
         options={{
           headerShown: false,
         }}
         component={Success}
       />
       <Stack.Screen
-        name='Todos'
+        name="Todos"
         options={{
           headerShown: false,
         }}
         component={Todo}
       />
     </Stack.Navigator>
-  )
+  );
 }
