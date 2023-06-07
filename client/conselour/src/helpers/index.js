@@ -1,6 +1,6 @@
 const axios = require("axios")
 
-const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL })
+const api = axios.create({ baseURL: 'https://api.livy.foxhub.space' })
 
 api.interceptors.request.use(
   (config) => {

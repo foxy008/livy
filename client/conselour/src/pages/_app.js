@@ -6,7 +6,7 @@ import { Provider } from 'jotai'
 import { ToastContainer } from 'react-toastify';
 
 export default function App({ Component, pageProps }) {
-  const clientId = '338857378147-i9iovlptidjlqpfc0pn3cfdg2dnpf6uo.apps.googleusercontent.com'
+  const clientId = '274735990607-5qb855ni8u2o8d7v18gmjuur2pbsnhbl.apps.googleusercontent.com'
   return (
     <Provider>
       <Protected >

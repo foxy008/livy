@@ -11,7 +11,7 @@ import router from './router'
 const app = createApp(App)
 
 app.use(vue3GoogleLogin, {
-    clientId: '10605181570-23qpgdh6vuol4cvp7vmshbsn3262j458.apps.googleusercontent.com'
+    clientId: '274735990607-5qb855ni8u2o8d7v18gmjuur2pbsnhbl.apps.googleusercontent.com'
 })
 
 const pinia = createPinia()
