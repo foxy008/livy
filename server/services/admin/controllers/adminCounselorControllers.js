@@ -1,10 +1,10 @@
-const { CounselorSubmission } = require('../models/index');
+const { CounselorSubmission } = require("../models/index");
 
 class adminCounselorControllers {
   static async readCounselors(req, res, next) {
     try {
       const counselors = await CounselorSubmission.findAll({
-        include: ['User'],
+        include: ["User"],
       });
 
       res.status(200).json(counselors);
@@ -19,12 +19,12 @@ class adminCounselorControllers {
       const { status } = req.body;
       let findCounselor = await CounselorSubmission.findByPk(+id);
       if (!findCounselor) {
-        throw { name: 'NotFound' };
+        throw { name: "NotFound" };
       }
       await CounselorSubmission.update({ status }, { where: { id } });
 
       res.status(200).json({
-        message: 'Success updated status counselor',
+        message: "Success updated status counselor",
       });
     } catch (error) {
       next(error);
@@ -38,7 +38,7 @@ class adminCounselorControllers {
       const findCounselor = await CounselorSubmission.findByPk(+id);
 
       if (!findCounselor) {
-        throw { name: 'NotFound' };
+        throw { name: "NotFound" };
       }
 
       await CounselorSubmission.destroy({
@@ -46,7 +46,7 @@ class adminCounselorControllers {
       });
 
       res.status(200).json({
-        message: 'Success deleted status counselor',
+        message: "Success deleted status counselor",
       });
     } catch (error) {
       next(error);
