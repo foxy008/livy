@@ -13,18 +13,14 @@ const COUNSELOR = "client:counselor";
 class ClientController {
   static async getHome(req, res, next) {
     try {
-      const cached = await redis.get(HOME);
-      if (cached) {
-        return res.status(200).json(JSON.parse(cached));
-      }
       const { data: podcasts } = await adminAPI.get("/posts", {
-        params: { type: "podcast" },
+        params: { type: "Podcast" },
       });
       const { data: articles } = await adminAPI.get("/posts", {
-        params: { type: "article" },
+        params: { type: "Article" },
       });
       const { data: videos } = await adminAPI.get("/posts", {
-        params: { type: "video" },
+        params: { type: "Video" },
       });
 
       const result = { podcasts, articles, videos };

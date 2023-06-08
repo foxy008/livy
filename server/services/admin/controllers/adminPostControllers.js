@@ -1,4 +1,4 @@
-const { AdminPost, User } = require('../models/index');
+const { AdminPost, User } = require("../models/index");
 
 class adminPostControllers {
   static async readPosts(req, res, next) {
@@ -25,13 +25,19 @@ class adminPostControllers {
     try {
       const { id, title, url, caption, type, UserId } = req.body;
 
-      const newPost = await AdminPost.create({ id, title, url, caption, type, UserId });
+      const newPost = await AdminPost.create({
+        id,
+        title,
+        url,
+        caption,
+        type,
+        UserId,
+      });
 
       res.status(201).json({
         message: `Success created ${newPost.title}`,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
@@ -39,11 +45,10 @@ class adminPostControllers {
   static async readPostById(req, res, next) {
     try {
       const { id } = req.params;
-      console.log(id, 'ini id');
       const findPost = await AdminPost.findByPk(+id);
 
       if (!findPost) {
-        throw { name: 'NotFound' };
+        throw { name: "NotFound" };
       }
 
       res.status(200).json(findPost);
@@ -60,7 +65,7 @@ class adminPostControllers {
       let findPost = await AdminPost.findByPk(+id);
 
       if (!findPost) {
-        throw { name: 'NotFound' };
+        throw { name: "NotFound" };
       }
 
       await AdminPost.update(
@@ -92,7 +97,7 @@ class adminPostControllers {
       const findPost = await AdminPost.findByPk(+id);
 
       if (!findPost) {
-        throw { name: 'NotFound' };
+        throw { name: "NotFound" };
       }
 
       await AdminPost.destroy({
